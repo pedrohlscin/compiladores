@@ -5,7 +5,7 @@ goal
  ;
 
 mainClass
- : 'class' identifier '{' 'public' 'static' 'Void' 'main' '(' 'String' '[' ']' identifier ')' '{' statement '}' '}'
+ : 'class' identifier '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' identifier ')' '{' statement '}' '}'
  ;
 
 classDeclaration
@@ -29,8 +29,8 @@ type
 
 statement
  : '{' (statement)* '}'
- | 'if' '(' expression ')'* '}'
- | 'while' '(' expression ')' statement 'else' statement
+ | 'if' '(' expression ')' statement 'else' statement
+ | 'while' '(' expression ')' statement
  | 'System.out.println' '(' expression ')' ';'
  | identifier '=' expression ';'
  | identifier '[' expression ']' '=' expression ';'
@@ -38,7 +38,7 @@ statement
 
  expression
  : expression ( '&&' | '<' | '+' | '-' | '*' ) expression
- expression '[' expression ']'
+ | expression '[' expression ']'
  | expression '.' 'length'
  | expression '.' identifier '(' ( expression ( ',' expression )* )? ')'
  | integerLiteral
@@ -60,4 +60,4 @@ COMMENT: '/*' .*? '*/' -> skip;
 LINE_COMMENT: '//' ~[\r\n]* -> skip;
 IDENTIFIER: [_a-zA-Z][_a-zA-Z0-9]*;
 INTEGER_LITERAL: [1-9][0-9]* | '0';
-WS: [ \t\f\r\n] -> skip;
+WS: [ \t\f\r\n]+ -> skip;
