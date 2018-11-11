@@ -63,7 +63,7 @@ public class Main {
 //		ppv.visit(p);
 		try {
 			ImpPedroVisitor astVisitor = new ImpPedroVisitor();
-			CharStream cs = CharStreams.fromFileName("/home/p/github/if688.github.io/atividades/04-MiniJavaAST/src/br/ufpe/cin/if688/minijava/resources/teste_basico.txt");
+			CharStream cs = CharStreams.fromFileName("C:\\Users\\pedro\\IdeaProjects\\compiladores\\atv_4\\04-MiniJavaAST\\src\\br\\ufpe\\cin\\if688\\minijava\\resources\\teste_basico.txt");
 
 
 

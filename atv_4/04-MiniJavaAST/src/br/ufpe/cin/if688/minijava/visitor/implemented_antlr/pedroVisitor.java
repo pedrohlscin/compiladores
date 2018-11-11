@@ -1,4 +1,4 @@
-// Generated from /home/p/github/if688.github.io/atividades/04-MiniJavaAST/src/br/ufpe/cin/if688/minijava/pedro.g4 by ANTLR 4.7
+// Generated from C:/Users/pedro/IdeaProjects/compiladores/atv_4/04-MiniJavaAST/src/br/ufpe/cin/if688/minijava\pedro.g4 by ANTLR 4.7
 package br.ufpe.cin.if688.minijava.visitor.implemented_antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -47,17 +47,138 @@ public interface pedroVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitType(pedroParser.TypeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link pedroParser#statement}.
+	 * Visit a parse tree produced by the {@code cochetes}
+	 * labeled alternative in {@link pedroParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatement(pedroParser.StatementContext ctx);
+	T visitCochetes(pedroParser.CochetesContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link pedroParser#expression}.
+	 * Visit a parse tree produced by the {@code if}
+	 * labeled alternative in {@link pedroParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(pedroParser.ExpressionContext ctx);
+	T visitIf(pedroParser.IfContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code while}
+	 * labeled alternative in {@link pedroParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhile(pedroParser.WhileContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code print}
+	 * labeled alternative in {@link pedroParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrint(pedroParser.PrintContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code atribuicao}
+	 * labeled alternative in {@link pedroParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtribuicao(pedroParser.AtribuicaoContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code atribuicaoArray}
+	 * labeled alternative in {@link pedroParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtribuicaoArray(pedroParser.AtribuicaoArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code negation}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNegation(pedroParser.NegationContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code false}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFalse(pedroParser.FalseContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code this}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitThis(pedroParser.ThisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code length}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLength(pedroParser.LengthContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code newArray}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewArray(pedroParser.NewArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code arrayLookup}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayLookup(pedroParser.ArrayLookupContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code newObj}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewObj(pedroParser.NewObjContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code literal}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteral(pedroParser.LiteralContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code call}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCall(pedroParser.CallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code addParenthesis}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAddParenthesis(pedroParser.AddParenthesisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code true}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTrue(pedroParser.TrueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code id}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId(pedroParser.IdContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code expressaoBinaria}
+	 * labeled alternative in {@link pedroParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressaoBinaria(pedroParser.ExpressaoBinariaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link pedroParser#identifier}.
 	 * @param ctx the parse tree

@@ -1,4 +1,4 @@
-// Generated from /home/p/github/if688.github.io/atividades/04-MiniJavaAST/src/br/ufpe/cin/if688/minijava/pedro.g4 by ANTLR 4.7
+// Generated from C:/Users/pedro/IdeaProjects/compiladores/atv_4/04-MiniJavaAST/src/br/ufpe/cin/if688/minijava\pedro.g4 by ANTLR 4.7
 package br.ufpe.cin.if688.minijava.visitor.implemented_antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -20,9 +20,8 @@ public class pedroParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
-		T__31=32, T__32=33, T__33=34, T__34=35, COMMENT=36, LINE_COMMENT=37, IDENTIFIER=38, 
-		INTEGER_LITERAL=39, WS=40;
+		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, COMMENT=31, 
+		LINE_COMMENT=32, OPERATOR=33, IDENTIFIER=34, INTEGER_LITERAL=35, WS=36;
 	public static final int
 		RULE_goal = 0, RULE_mainClass = 1, RULE_classDeclaration = 2, RULE_varDeclaration = 3, 
 		RULE_methodDeclaration = 4, RULE_type = 5, RULE_statement = 6, RULE_expression = 7, 
@@ -36,14 +35,13 @@ public class pedroParser extends Parser {
 		null, "'class'", "'{'", "'public'", "'static'", "'void'", "'main'", "'('", 
 		"'String'", "'['", "']'", "')'", "'}'", "'extends'", "';'", "','", "'return'", 
 		"'int'", "'boolean'", "'if'", "'else'", "'while'", "'System.out.println'", 
-		"'='", "'&&'", "'<'", "'+'", "'-'", "'*'", "'.'", "'length'", "'true'", 
-		"'false'", "'this'", "'new'", "'!'"
+		"'='", "'.'", "'length'", "'true'", "'false'", "'this'", "'new'", "'!'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		"COMMENT", "LINE_COMMENT", "IDENTIFIER", "INTEGER_LITERAL", "WS"
+		null, null, null, null, null, null, null, "COMMENT", "LINE_COMMENT", "OPERATOR", 
+		"IDENTIFIER", "INTEGER_LITERAL", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -625,11 +623,129 @@ public class pedroParser extends Parser {
 	}
 
 	public static class StatementContext extends ParserRuleContext {
+		public StatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_statement; }
+	 
+		public StatementContext() { }
+		public void copyFrom(StatementContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class PrintContext extends StatementContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public PrintContext(StatementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterPrint(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitPrint(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitPrint(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AtribuicaoContext extends StatementContext {
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public AtribuicaoContext(StatementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterAtribuicao(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitAtribuicao(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitAtribuicao(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class WhileContext extends StatementContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public StatementContext statement() {
+			return getRuleContext(StatementContext.class,0);
+		}
+		public WhileContext(StatementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterWhile(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitWhile(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitWhile(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IfContext extends StatementContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
 		public List<StatementContext> statement() {
 			return getRuleContexts(StatementContext.class);
 		}
 		public StatementContext statement(int i) {
 			return getRuleContext(StatementContext.class,i);
+		}
+		public IfContext(StatementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterIf(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitIf(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitIf(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CochetesContext extends StatementContext {
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
+		}
+		public StatementContext statement(int i) {
+			return getRuleContext(StatementContext.class,i);
+		}
+		public CochetesContext(StatementContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterCochetes(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitCochetes(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitCochetes(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AtribuicaoArrayContext extends StatementContext {
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
 		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
@@ -637,24 +753,18 @@ public class pedroParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public IdentifierContext identifier() {
-			return getRuleContext(IdentifierContext.class,0);
-		}
-		public StatementContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_statement; }
+		public AtribuicaoArrayContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterStatement(this);
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterAtribuicaoArray(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitStatement(this);
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitAtribuicaoArray(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitAtribuicaoArray(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -668,6 +778,7 @@ public class pedroParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
+				_localctx = new CochetesContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(116);
@@ -691,6 +802,7 @@ public class pedroParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new IfContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(124);
@@ -710,6 +822,7 @@ public class pedroParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new WhileContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(132);
@@ -725,6 +838,7 @@ public class pedroParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new PrintContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(138);
@@ -740,6 +854,7 @@ public class pedroParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new AtribuicaoContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(144);
@@ -753,6 +868,7 @@ public class pedroParser extends Parser {
 				}
 				break;
 			case 6:
+				_localctx = new AtribuicaoArrayContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(149);
@@ -785,33 +901,264 @@ public class pedroParser extends Parser {
 	}
 
 	public static class ExpressionContext extends ParserRuleContext {
-		public IntegerLiteralContext integerLiteral() {
-			return getRuleContext(IntegerLiteralContext.class,0);
+		public ExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		public IdentifierContext identifier() {
-			return getRuleContext(IdentifierContext.class,0);
+		@Override public int getRuleIndex() { return RULE_expression; }
+	 
+		public ExpressionContext() { }
+		public void copyFrom(ExpressionContext ctx) {
+			super.copyFrom(ctx);
 		}
+	}
+	public static class NegationContext extends ExpressionContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public NegationContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterNegation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitNegation(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitNegation(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class FalseContext extends ExpressionContext {
+		public FalseContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterFalse(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitFalse(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitFalse(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ThisContext extends ExpressionContext {
+		public ThisContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterThis(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitThis(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitThis(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class LengthContext extends ExpressionContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public LengthContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterLength(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitLength(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitLength(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NewArrayContext extends ExpressionContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public NewArrayContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterNewArray(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitNewArray(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitNewArray(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ArrayLookupContext extends ExpressionContext {
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public ExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expression; }
+		public ArrayLookupContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterExpression(this);
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterArrayLookup(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitExpression(this);
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitArrayLookup(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitArrayLookup(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NewObjContext extends ExpressionContext {
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
+		public NewObjContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterNewObj(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitNewObj(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitNewObj(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class LiteralContext extends ExpressionContext {
+		public IntegerLiteralContext integerLiteral() {
+			return getRuleContext(IntegerLiteralContext.class,0);
+		}
+		public LiteralContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterLiteral(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitLiteral(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitLiteral(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CallContext extends ExpressionContext {
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
+		public CallContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterCall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitCall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitCall(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AddParenthesisContext extends ExpressionContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public AddParenthesisContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterAddParenthesis(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitAddParenthesis(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitAddParenthesis(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class TrueContext extends ExpressionContext {
+		public TrueContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterTrue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitTrue(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitTrue(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IdContext extends ExpressionContext {
+		public IdentifierContext identifier() {
+			return getRuleContext(IdentifierContext.class,0);
+		}
+		public IdContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterId(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitId(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitId(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ExpressaoBinariaContext extends ExpressionContext {
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public TerminalNode OPERATOR() { return getToken(pedroParser.OPERATOR, 0); }
+		public ExpressaoBinariaContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).enterExpressaoBinaria(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pedroListener ) ((pedroListener)listener).exitExpressaoBinaria(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof pedroVisitor ) return ((pedroVisitor<? extends T>)visitor).visitExpressaoBinaria(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -837,38 +1184,57 @@ public class pedroParser extends Parser {
 			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
 				{
+				_localctx = new LiteralContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
 				setState(160);
 				integerLiteral();
 				}
 				break;
 			case 2:
 				{
+				_localctx = new TrueContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(161);
-				match(T__30);
+				match(T__25);
 				}
 				break;
 			case 3:
 				{
+				_localctx = new FalseContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(162);
-				match(T__31);
+				match(T__26);
 				}
 				break;
 			case 4:
 				{
+				_localctx = new IdContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(163);
 				identifier();
 				}
 				break;
 			case 5:
 				{
+				_localctx = new ThisContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(164);
-				match(T__32);
+				match(T__27);
 				}
 				break;
 			case 6:
 				{
+				_localctx = new NewArrayContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(165);
-				match(T__33);
+				match(T__28);
 				setState(166);
 				match(T__16);
 				setState(167);
@@ -881,8 +1247,11 @@ public class pedroParser extends Parser {
 				break;
 			case 7:
 				{
+				_localctx = new NewObjContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(171);
-				match(T__33);
+				match(T__28);
 				setState(172);
 				identifier();
 				setState(173);
@@ -893,6 +1262,9 @@ public class pedroParser extends Parser {
 				break;
 			case 8:
 				{
+				_localctx = new AddParenthesisContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(176);
 				match(T__6);
 				setState(177);
@@ -903,8 +1275,11 @@ public class pedroParser extends Parser {
 				break;
 			case 9:
 				{
+				_localctx = new NegationContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(180);
-				match(T__34);
+				match(T__29);
 				setState(181);
 				expression(1);
 				}
@@ -924,19 +1299,13 @@ public class pedroParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
 					case 1:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new ExpressaoBinariaContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(184);
 						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
+						{
 						setState(185);
-						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27))) != 0)) ) {
-						_errHandler.recoverInline(this);
-						}
-						else {
-							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-							_errHandler.reportMatch(this);
-							consume();
+						match(OPERATOR);
 						}
 						setState(186);
 						expression(14);
@@ -944,7 +1313,7 @@ public class pedroParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new ArrayLookupContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(187);
 						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
@@ -958,24 +1327,24 @@ public class pedroParser extends Parser {
 						break;
 					case 3:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new LengthContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(192);
 						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
 						setState(193);
-						match(T__28);
+						match(T__23);
 						setState(194);
-						match(T__29);
+						match(T__24);
 						}
 						break;
 					case 4:
 						{
-						_localctx = new ExpressionContext(_parentctx, _parentState);
+						_localctx = new CallContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(195);
 						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
 						setState(196);
-						match(T__28);
+						match(T__23);
 						setState(197);
 						identifier();
 						setState(198);
@@ -983,7 +1352,7 @@ public class pedroParser extends Parser {
 						setState(207);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
-						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__30) | (1L << T__31) | (1L << T__32) | (1L << T__33) | (1L << T__34) | (1L << IDENTIFIER) | (1L << INTEGER_LITERAL))) != 0)) {
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__28) | (1L << T__29) | (1L << IDENTIFIER) | (1L << INTEGER_LITERAL))) != 0)) {
 							{
 							setState(199);
 							expression(0);
@@ -1136,7 +1505,7 @@ public class pedroParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3*\u00df\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3&\u00df\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\3\2\3\2\7\2\31\n\2\f\2\16\2\34\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\5\4"+
@@ -1151,61 +1520,61 @@ public class pedroParser extends Parser {
 		"\t\u00b9\n\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3"+
 		"\t\3\t\3\t\3\t\7\t\u00cd\n\t\f\t\16\t\u00d0\13\t\5\t\u00d2\n\t\3\t\3\t"+
 		"\7\t\u00d6\n\t\f\t\16\t\u00d9\13\t\3\n\3\n\3\13\3\13\3\13\2\3\20\f\2\4"+
-		"\6\b\n\f\16\20\22\24\2\3\3\2\32\36\2\u00f3\2\26\3\2\2\2\4\37\3\2\2\2\6"+
-		"\61\3\2\2\2\bF\3\2\2\2\nJ\3\2\2\2\ft\3\2\2\2\16\u009f\3\2\2\2\20\u00b8"+
-		"\3\2\2\2\22\u00da\3\2\2\2\24\u00dc\3\2\2\2\26\32\5\4\3\2\27\31\5\6\4\2"+
-		"\30\27\3\2\2\2\31\34\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\35\3\2\2\2"+
-		"\34\32\3\2\2\2\35\36\7\2\2\3\36\3\3\2\2\2\37 \7\3\2\2 !\5\22\n\2!\"\7"+
-		"\4\2\2\"#\7\5\2\2#$\7\6\2\2$%\7\7\2\2%&\7\b\2\2&\'\7\t\2\2\'(\7\n\2\2"+
-		"()\7\13\2\2)*\7\f\2\2*+\5\22\n\2+,\7\r\2\2,-\7\4\2\2-.\5\16\b\2./\7\16"+
-		"\2\2/\60\7\16\2\2\60\5\3\2\2\2\61\62\7\3\2\2\62\65\5\22\n\2\63\64\7\17"+
-		"\2\2\64\66\5\22\n\2\65\63\3\2\2\2\65\66\3\2\2\2\66\67\3\2\2\2\67;\7\4"+
-		"\2\28:\5\b\5\298\3\2\2\2:=\3\2\2\2;9\3\2\2\2;<\3\2\2\2<A\3\2\2\2=;\3\2"+
-		"\2\2>@\5\n\6\2?>\3\2\2\2@C\3\2\2\2A?\3\2\2\2AB\3\2\2\2BD\3\2\2\2CA\3\2"+
-		"\2\2DE\7\16\2\2E\7\3\2\2\2FG\5\f\7\2GH\5\22\n\2HI\7\20\2\2I\t\3\2\2\2"+
-		"JK\7\5\2\2KL\5\f\7\2LM\5\22\n\2MY\7\t\2\2NO\5\f\7\2OV\5\22\n\2PQ\7\21"+
-		"\2\2QR\5\f\7\2RS\5\22\n\2SU\3\2\2\2TP\3\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3"+
-		"\2\2\2WZ\3\2\2\2XV\3\2\2\2YN\3\2\2\2YZ\3\2\2\2Z[\3\2\2\2[\\\7\r\2\2\\"+
-		"`\7\4\2\2]_\5\b\5\2^]\3\2\2\2_b\3\2\2\2`^\3\2\2\2`a\3\2\2\2af\3\2\2\2"+
-		"b`\3\2\2\2ce\5\16\b\2dc\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2\2gi\3\2\2"+
-		"\2hf\3\2\2\2ij\7\22\2\2jk\5\20\t\2kl\7\20\2\2lm\7\16\2\2m\13\3\2\2\2n"+
-		"o\7\23\2\2op\7\13\2\2pu\7\f\2\2qu\7\24\2\2ru\7\23\2\2su\5\22\n\2tn\3\2"+
-		"\2\2tq\3\2\2\2tr\3\2\2\2ts\3\2\2\2u\r\3\2\2\2vz\7\4\2\2wy\5\16\b\2xw\3"+
-		"\2\2\2y|\3\2\2\2zx\3\2\2\2z{\3\2\2\2{}\3\2\2\2|z\3\2\2\2}\u00a0\7\16\2"+
-		"\2~\177\7\25\2\2\177\u0080\7\t\2\2\u0080\u0081\5\20\t\2\u0081\u0082\7"+
-		"\r\2\2\u0082\u0083\5\16\b\2\u0083\u0084\7\26\2\2\u0084\u0085\5\16\b\2"+
-		"\u0085\u00a0\3\2\2\2\u0086\u0087\7\27\2\2\u0087\u0088\7\t\2\2\u0088\u0089"+
-		"\5\20\t\2\u0089\u008a\7\r\2\2\u008a\u008b\5\16\b\2\u008b\u00a0\3\2\2\2"+
-		"\u008c\u008d\7\30\2\2\u008d\u008e\7\t\2\2\u008e\u008f\5\20\t\2\u008f\u0090"+
-		"\7\r\2\2\u0090\u0091\7\20\2\2\u0091\u00a0\3\2\2\2\u0092\u0093\5\22\n\2"+
-		"\u0093\u0094\7\31\2\2\u0094\u0095\5\20\t\2\u0095\u0096\7\20\2\2\u0096"+
-		"\u00a0\3\2\2\2\u0097\u0098\5\22\n\2\u0098\u0099\7\13\2\2\u0099\u009a\5"+
-		"\20\t\2\u009a\u009b\7\f\2\2\u009b\u009c\7\31\2\2\u009c\u009d\5\20\t\2"+
-		"\u009d\u009e\7\20\2\2\u009e\u00a0\3\2\2\2\u009fv\3\2\2\2\u009f~\3\2\2"+
-		"\2\u009f\u0086\3\2\2\2\u009f\u008c\3\2\2\2\u009f\u0092\3\2\2\2\u009f\u0097"+
-		"\3\2\2\2\u00a0\17\3\2\2\2\u00a1\u00a2\b\t\1\2\u00a2\u00b9\5\24\13\2\u00a3"+
-		"\u00b9\7!\2\2\u00a4\u00b9\7\"\2\2\u00a5\u00b9\5\22\n\2\u00a6\u00b9\7#"+
-		"\2\2\u00a7\u00a8\7$\2\2\u00a8\u00a9\7\23\2\2\u00a9\u00aa\7\13\2\2\u00aa"+
-		"\u00ab\5\20\t\2\u00ab\u00ac\7\f\2\2\u00ac\u00b9\3\2\2\2\u00ad\u00ae\7"+
-		"$\2\2\u00ae\u00af\5\22\n\2\u00af\u00b0\7\t\2\2\u00b0\u00b1\7\r\2\2\u00b1"+
-		"\u00b9\3\2\2\2\u00b2\u00b3\7\t\2\2\u00b3\u00b4\5\20\t\2\u00b4\u00b5\7"+
-		"\r\2\2\u00b5\u00b9\3\2\2\2\u00b6\u00b7\7%\2\2\u00b7\u00b9\5\20\t\3\u00b8"+
-		"\u00a1\3\2\2\2\u00b8\u00a3\3\2\2\2\u00b8\u00a4\3\2\2\2\u00b8\u00a5\3\2"+
-		"\2\2\u00b8\u00a6\3\2\2\2\u00b8\u00a7\3\2\2\2\u00b8\u00ad\3\2\2\2\u00b8"+
-		"\u00b2\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b9\u00d7\3\2\2\2\u00ba\u00bb\f\17"+
-		"\2\2\u00bb\u00bc\t\2\2\2\u00bc\u00d6\5\20\t\20\u00bd\u00be\f\16\2\2\u00be"+
-		"\u00bf\7\13\2\2\u00bf\u00c0\5\20\t\2\u00c0\u00c1\7\f\2\2\u00c1\u00d6\3"+
-		"\2\2\2\u00c2\u00c3\f\r\2\2\u00c3\u00c4\7\37\2\2\u00c4\u00d6\7 \2\2\u00c5"+
-		"\u00c6\f\f\2\2\u00c6\u00c7\7\37\2\2\u00c7\u00c8\5\22\n\2\u00c8\u00d1\7"+
-		"\t\2\2\u00c9\u00ce\5\20\t\2\u00ca\u00cb\7\21\2\2\u00cb\u00cd\5\20\t\2"+
-		"\u00cc\u00ca\3\2\2\2\u00cd\u00d0\3\2\2\2\u00ce\u00cc\3\2\2\2\u00ce\u00cf"+
-		"\3\2\2\2\u00cf\u00d2\3\2\2\2\u00d0\u00ce\3\2\2\2\u00d1\u00c9\3\2\2\2\u00d1"+
-		"\u00d2\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\u00d4\7\r\2\2\u00d4\u00d6\3\2"+
-		"\2\2\u00d5\u00ba\3\2\2\2\u00d5\u00bd\3\2\2\2\u00d5\u00c2\3\2\2\2\u00d5"+
-		"\u00c5\3\2\2\2\u00d6\u00d9\3\2\2\2\u00d7\u00d5\3\2\2\2\u00d7\u00d8\3\2"+
-		"\2\2\u00d8\21\3\2\2\2\u00d9\u00d7\3\2\2\2\u00da\u00db\7(\2\2\u00db\23"+
-		"\3\2\2\2\u00dc\u00dd\7)\2\2\u00dd\25\3\2\2\2\22\32\65;AVY`ftz\u009f\u00b8"+
-		"\u00ce\u00d1\u00d5\u00d7";
+		"\6\b\n\f\16\20\22\24\2\2\2\u00f3\2\26\3\2\2\2\4\37\3\2\2\2\6\61\3\2\2"+
+		"\2\bF\3\2\2\2\nJ\3\2\2\2\ft\3\2\2\2\16\u009f\3\2\2\2\20\u00b8\3\2\2\2"+
+		"\22\u00da\3\2\2\2\24\u00dc\3\2\2\2\26\32\5\4\3\2\27\31\5\6\4\2\30\27\3"+
+		"\2\2\2\31\34\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\35\3\2\2\2\34\32\3"+
+		"\2\2\2\35\36\7\2\2\3\36\3\3\2\2\2\37 \7\3\2\2 !\5\22\n\2!\"\7\4\2\2\""+
+		"#\7\5\2\2#$\7\6\2\2$%\7\7\2\2%&\7\b\2\2&\'\7\t\2\2\'(\7\n\2\2()\7\13\2"+
+		"\2)*\7\f\2\2*+\5\22\n\2+,\7\r\2\2,-\7\4\2\2-.\5\16\b\2./\7\16\2\2/\60"+
+		"\7\16\2\2\60\5\3\2\2\2\61\62\7\3\2\2\62\65\5\22\n\2\63\64\7\17\2\2\64"+
+		"\66\5\22\n\2\65\63\3\2\2\2\65\66\3\2\2\2\66\67\3\2\2\2\67;\7\4\2\28:\5"+
+		"\b\5\298\3\2\2\2:=\3\2\2\2;9\3\2\2\2;<\3\2\2\2<A\3\2\2\2=;\3\2\2\2>@\5"+
+		"\n\6\2?>\3\2\2\2@C\3\2\2\2A?\3\2\2\2AB\3\2\2\2BD\3\2\2\2CA\3\2\2\2DE\7"+
+		"\16\2\2E\7\3\2\2\2FG\5\f\7\2GH\5\22\n\2HI\7\20\2\2I\t\3\2\2\2JK\7\5\2"+
+		"\2KL\5\f\7\2LM\5\22\n\2MY\7\t\2\2NO\5\f\7\2OV\5\22\n\2PQ\7\21\2\2QR\5"+
+		"\f\7\2RS\5\22\n\2SU\3\2\2\2TP\3\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3\2\2\2WZ"+
+		"\3\2\2\2XV\3\2\2\2YN\3\2\2\2YZ\3\2\2\2Z[\3\2\2\2[\\\7\r\2\2\\`\7\4\2\2"+
+		"]_\5\b\5\2^]\3\2\2\2_b\3\2\2\2`^\3\2\2\2`a\3\2\2\2af\3\2\2\2b`\3\2\2\2"+
+		"ce\5\16\b\2dc\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2\2gi\3\2\2\2hf\3\2\2"+
+		"\2ij\7\22\2\2jk\5\20\t\2kl\7\20\2\2lm\7\16\2\2m\13\3\2\2\2no\7\23\2\2"+
+		"op\7\13\2\2pu\7\f\2\2qu\7\24\2\2ru\7\23\2\2su\5\22\n\2tn\3\2\2\2tq\3\2"+
+		"\2\2tr\3\2\2\2ts\3\2\2\2u\r\3\2\2\2vz\7\4\2\2wy\5\16\b\2xw\3\2\2\2y|\3"+
+		"\2\2\2zx\3\2\2\2z{\3\2\2\2{}\3\2\2\2|z\3\2\2\2}\u00a0\7\16\2\2~\177\7"+
+		"\25\2\2\177\u0080\7\t\2\2\u0080\u0081\5\20\t\2\u0081\u0082\7\r\2\2\u0082"+
+		"\u0083\5\16\b\2\u0083\u0084\7\26\2\2\u0084\u0085\5\16\b\2\u0085\u00a0"+
+		"\3\2\2\2\u0086\u0087\7\27\2\2\u0087\u0088\7\t\2\2\u0088\u0089\5\20\t\2"+
+		"\u0089\u008a\7\r\2\2\u008a\u008b\5\16\b\2\u008b\u00a0\3\2\2\2\u008c\u008d"+
+		"\7\30\2\2\u008d\u008e\7\t\2\2\u008e\u008f\5\20\t\2\u008f\u0090\7\r\2\2"+
+		"\u0090\u0091\7\20\2\2\u0091\u00a0\3\2\2\2\u0092\u0093\5\22\n\2\u0093\u0094"+
+		"\7\31\2\2\u0094\u0095\5\20\t\2\u0095\u0096\7\20\2\2\u0096\u00a0\3\2\2"+
+		"\2\u0097\u0098\5\22\n\2\u0098\u0099\7\13\2\2\u0099\u009a\5\20\t\2\u009a"+
+		"\u009b\7\f\2\2\u009b\u009c\7\31\2\2\u009c\u009d\5\20\t\2\u009d\u009e\7"+
+		"\20\2\2\u009e\u00a0\3\2\2\2\u009fv\3\2\2\2\u009f~\3\2\2\2\u009f\u0086"+
+		"\3\2\2\2\u009f\u008c\3\2\2\2\u009f\u0092\3\2\2\2\u009f\u0097\3\2\2\2\u00a0"+
+		"\17\3\2\2\2\u00a1\u00a2\b\t\1\2\u00a2\u00b9\5\24\13\2\u00a3\u00b9\7\34"+
+		"\2\2\u00a4\u00b9\7\35\2\2\u00a5\u00b9\5\22\n\2\u00a6\u00b9\7\36\2\2\u00a7"+
+		"\u00a8\7\37\2\2\u00a8\u00a9\7\23\2\2\u00a9\u00aa\7\13\2\2\u00aa\u00ab"+
+		"\5\20\t\2\u00ab\u00ac\7\f\2\2\u00ac\u00b9\3\2\2\2\u00ad\u00ae\7\37\2\2"+
+		"\u00ae\u00af\5\22\n\2\u00af\u00b0\7\t\2\2\u00b0\u00b1\7\r\2\2\u00b1\u00b9"+
+		"\3\2\2\2\u00b2\u00b3\7\t\2\2\u00b3\u00b4\5\20\t\2\u00b4\u00b5\7\r\2\2"+
+		"\u00b5\u00b9\3\2\2\2\u00b6\u00b7\7 \2\2\u00b7\u00b9\5\20\t\3\u00b8\u00a1"+
+		"\3\2\2\2\u00b8\u00a3\3\2\2\2\u00b8\u00a4\3\2\2\2\u00b8\u00a5\3\2\2\2\u00b8"+
+		"\u00a6\3\2\2\2\u00b8\u00a7\3\2\2\2\u00b8\u00ad\3\2\2\2\u00b8\u00b2\3\2"+
+		"\2\2\u00b8\u00b6\3\2\2\2\u00b9\u00d7\3\2\2\2\u00ba\u00bb\f\17\2\2\u00bb"+
+		"\u00bc\7#\2\2\u00bc\u00d6\5\20\t\20\u00bd\u00be\f\16\2\2\u00be\u00bf\7"+
+		"\13\2\2\u00bf\u00c0\5\20\t\2\u00c0\u00c1\7\f\2\2\u00c1\u00d6\3\2\2\2\u00c2"+
+		"\u00c3\f\r\2\2\u00c3\u00c4\7\32\2\2\u00c4\u00d6\7\33\2\2\u00c5\u00c6\f"+
+		"\f\2\2\u00c6\u00c7\7\32\2\2\u00c7\u00c8\5\22\n\2\u00c8\u00d1\7\t\2\2\u00c9"+
+		"\u00ce\5\20\t\2\u00ca\u00cb\7\21\2\2\u00cb\u00cd\5\20\t\2\u00cc\u00ca"+
+		"\3\2\2\2\u00cd\u00d0\3\2\2\2\u00ce\u00cc\3\2\2\2\u00ce\u00cf\3\2\2\2\u00cf"+
+		"\u00d2\3\2\2\2\u00d0\u00ce\3\2\2\2\u00d1\u00c9\3\2\2\2\u00d1\u00d2\3\2"+
+		"\2\2\u00d2\u00d3\3\2\2\2\u00d3\u00d4\7\r\2\2\u00d4\u00d6\3\2\2\2\u00d5"+
+		"\u00ba\3\2\2\2\u00d5\u00bd\3\2\2\2\u00d5\u00c2\3\2\2\2\u00d5\u00c5\3\2"+
+		"\2\2\u00d6\u00d9\3\2\2\2\u00d7\u00d5\3\2\2\2\u00d7\u00d8\3\2\2\2\u00d8"+
+		"\21\3\2\2\2\u00d9\u00d7\3\2\2\2\u00da\u00db\7$\2\2\u00db\23\3\2\2\2\u00dc"+
+		"\u00dd\7%\2\2\u00dd\25\3\2\2\2\22\32\65;AVY`ftz\u009f\u00b8\u00ce\u00d1"+
+		"\u00d5\u00d7";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
