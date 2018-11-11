@@ -1,0 +1,18 @@
+class Teste {
+  public static Void main (String [] Testando) {
+    System.out.println(2);
+  }
+}
+
+class A {
+  int num;
+  boolean certo;
+}
+
+class C extends A {
+
+}
+
+class C {
+  A var;
+}
